@@ -22,37 +22,37 @@ export const sidenavLinks: NavbarConfig[] = [
   {
     Icon: Store,
     label: 'Lojas',
-    path: '/lojas',
+    path: '/store',
     permission: ['ADMIN']
   },
   {
     Icon: Store,
     label: 'Mesa de Antifraude',
-    path: '/mesa-antifraude',
+    path: '/fraud',
     permission: ['ADMIN']
   },
   {
     Icon: Users,
     label: 'Clientes',
-    path: '/clientes',
+    path: '/clients',
     permission: ['ADMIN', 'CLIENT']
   },
   {
     Icon: Users,
     label: 'Usuários',
-    path: '/usuarios',
+    path: '/users',
     permission: ['ADMIN', 'CLIENT']
   },
   {
     Icon: CircleDollarSign,
     label: 'Cobrança',
-    path: '/cobranca',
+    path: '/billing',
     permission: ['ADMIN'],
     subItem: [
       {
         Icon: CircleDollarSign,
         label: 'Parcelas',
-        path: '/parcelas',
+        path: '/billing/installments',
         permission: ['ADMIN']
       }
     ]
@@ -60,17 +60,17 @@ export const sidenavLinks: NavbarConfig[] = [
   {
     Icon: BanknoteIcon,
     label: 'Total de Vendas',
-    path: '/total-vendas',
+    path: '/sales',
     permission: ['ADMIN']
   },
   {
-    path: '/revVideos',
     label: 'RevVideos',
+    path: '/revVideos',
     Icon: VideoIcon,
     permission: ['ADMIN']
   },
   {
-    path: '/risco-geral',
+    path: '/risk',
     permission: ['ADMIN'],
     label: 'Visão Geral de Risco',
     Icon: BarChart2Icon

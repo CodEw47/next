@@ -1,12 +1,8 @@
 'use server'
 
+import { fetchWrapper } from '@/lib/fetchWrapper'
 import { cookies } from 'next/headers'
 import { redirect } from 'next/navigation'
-
-interface LoginForm {
-  email: string
-  password: string
-}
 
 interface LoginResponse {
   token: string
@@ -14,13 +10,19 @@ interface LoginResponse {
   expireDate: number
 }
 
-export async function login(params: LoginForm) {
-  const response = await fetch('https://services.revpay.com.br/auth.svc/user/login', {
+interface FormState {
+  message: string
+}
+
+export async function onLoginAction(prevState: FormState, params: FormData): Promise<FormState> {
+  const response = await fetchWrapper<LoginResponse>('/auth.svc/user/login', {
     body: JSON.stringify(params),
     method: 'POST'
   })
-  const data = (await response.json()) as LoginResponse
 
-  cookies().set('session', data.token, { httpOnly: true, expires: new Date(data.expiresIn) })
+  cookies().set('session', response.token, {
+    httpOnly: true,
+    expires: new Date(response.expiresIn)
+  })
   redirect('/dashboard')
 }
